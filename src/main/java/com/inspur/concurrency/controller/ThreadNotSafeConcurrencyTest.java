@@ -1,6 +1,7 @@
 package com.inspur.concurrency.controller;
 
 import com.inspur.concurrency.annotation.ThreadNotSafe;
+import com.inspur.concurrency.annotation.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
@@ -9,11 +10,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
- * @description: 并发测试演示，线程不安全的例子
+ * @description: 并发测试演示，线程不安全的例子,当在计数的静态方法上添加锁synchronized，该线程变为安全，
+ * 因为当锁修饰静态方法时，只能按实例顺序执行，同一时间只能执行一个实例
  * @create: 2020-04-14 13:33
  **/
 @Slf4j
-@ThreadNotSafe
+@ThreadSafe
 public class ThreadNotSafeConcurrencyTest {
 
     /**
@@ -49,7 +51,7 @@ public class ThreadNotSafeConcurrencyTest {
         log.info("count:{},clientTotal:{},threadTotal:{}",count,clientTotal,threadTotal);
     }
 
-    private static void add() {
+    private synchronized static void add() {
         count++;
     }
 }

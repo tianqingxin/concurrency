@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class TestController {
-    @Autowired
-    private EntityUtils entityUtils;
 
     @GetMapping("/test")
     public String test(){
-        return "test,serverPort==="+entityUtils.getServerPort();
+        return "test,serverPort==="+EntityUtils.getInstance().getServerPort();
     }
 }
