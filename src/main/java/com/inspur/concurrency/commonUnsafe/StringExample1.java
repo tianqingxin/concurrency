@@ -1,5 +1,6 @@
 package com.inspur.concurrency.commonUnsafe;
 
+import com.inspur.concurrency.annotation.ThreadNotSafe;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
@@ -12,6 +13,7 @@ import java.util.concurrent.Semaphore;
  * @create: 2020-04-15 17:31
  **/
 @Slf4j
+@ThreadNotSafe
 public class StringExample1 {
     /**
      * 请求总数
