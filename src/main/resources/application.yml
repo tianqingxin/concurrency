@@ -1,2 +1,8 @@
 server:
   port: 9999
+
+
+user:
+  user-name: tqx
+  password: tqx
+  dept-no: inspur
