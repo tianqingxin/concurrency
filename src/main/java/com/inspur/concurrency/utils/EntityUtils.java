@@ -5,15 +5,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 /**
- * @description:
+ * @description: 枚举类实例在调用构造函数时，jvm只会调用一次
  * @create: 2020-04-14 11:06
  **/
 @NoArgsConstructor
 @Configuration
 public class EntityUtils {
-
-    private static volatile EntityUtils entityUtils;
 
     @Getter
     @Value("${server.port}")
@@ -21,13 +20,19 @@ public class EntityUtils {
 
     @Bean
     public static EntityUtils getInstance() {
-        if (entityUtils == null) {
-            synchronized (EntityUtils.class) {
-                if (entityUtils == null) {
-                    entityUtils = new EntityUtils();
-                }
-            }
+        return Singleton.INSTANCE.getEntityUtils();
+    }
+
+    private enum Singleton {
+        INSTANCE;
+        private EntityUtils entityUtils;
+
+        Singleton() {
+            entityUtils = new EntityUtils();
         }
-        return entityUtils;
+
+        public EntityUtils getEntityUtils() {
+            return entityUtils;
+        }
     }
 }
