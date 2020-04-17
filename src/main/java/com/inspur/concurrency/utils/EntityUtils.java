@@ -18,7 +18,7 @@ public class EntityUtils {
     @Value("${server.port}")
     private String serverPort;
 
-    @Bean
+    @Bean("getEntityUtils")
     public static EntityUtils getInstance() {
         return Singleton.INSTANCE.getEntityUtils();
     }
