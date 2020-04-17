@@ -2,10 +2,8 @@ package com.inspur.concurrency.controller;
 
 import com.inspur.concurrency.config.RedisClient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-
 @RestController
 @Slf4j
 public class RedisTestController {
@@ -13,7 +11,7 @@ public class RedisTestController {
     /**
      * 获取redis实例
      */
-    @Resource(name = "getRedisClient")
+    @Autowired
     private RedisClient redisClient;
 
     @PostMapping("/insert/{key}/{value}")
