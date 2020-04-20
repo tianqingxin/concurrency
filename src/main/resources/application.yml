@@ -9,3 +9,13 @@ user:
   user-name: tqx
   password: tqx
   dept-no: inspur
+
+spring:
+  application:
+    name: rabbitmq-config
+  rabbitmq:
+    host: 139.129.14.25
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
